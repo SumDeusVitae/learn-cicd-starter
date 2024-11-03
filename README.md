@@ -17,6 +17,7 @@ Run the server:
 ```bash
 go build -o notely && ./notely
 ```
+Test
 
 *This starts the server in non-database mode.* It will serve a simple webpage at `http://localhost:8080`.
 
