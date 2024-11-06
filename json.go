@@ -27,5 +27,11 @@ func respondWithJSON(w http.ResponseWriter, code int, payload interface{}) {
 		return
 	}
 	w.WriteHeader(code)
-	w.Write(dat)
+	if _, err := w.Write(dat); err != nil {
+		// Handle the error, e.g., log it and possibly return an error response to the client
+		log.Printf("Failed to write response: %v", err)
+		// Optionally, you could return an HTTP error code here
+		http.Error(w, "Failed to write response", http.StatusInternalServerError)
+	}
+
 }
